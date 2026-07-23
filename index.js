@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const helmet = require("helmet");
 
 dotenv.config();
 
@@ -14,8 +15,11 @@ app.use(express.json());
 
 app.use("/api/v2/auth", authRoutes);
 
+app.use(helmet());
+
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en el puerto ${PORT}`);
+app.listen(PORT,()=>{
+    console.log(`Servidor ejecutándose en ${PORT}`);
 });
